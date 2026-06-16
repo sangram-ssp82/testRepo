@@ -5,13 +5,36 @@ import Activity from '../models/Activity';
 import Workout from '../models/Workout';
 
 /**
- * Test Data Seed Script for OctoFit Tracker
+ * OctoFit Tracker - Test Data Seed Script
  * 
- * This script populates the octofit_db database with comprehensive test data including:
- * - 4 users with varied fitness profiles
- * - 2 teams with team members and leaders
- * - 8 activities with different exercise types and intensities
- * - 4 workouts with structured exercise plans
+ * This seed script populates the octofit_db MongoDB database with comprehensive test data.
+ * 
+ * TEST DATA SEED DESCRIPTION:
+ * ===========================
+ * 
+ * USERS (4 test users):
+ *   - john_doe: 28 years old, Weight loss goal, height 180cm, weight 75kg
+ *   - jane_smith: 26 years old, Muscle building goal, height 165cm, weight 62kg  
+ *   - mike_wilson: 32 years old, Stamina improvement goal, height 185cm, weight 85kg
+ *   - sarah_jones: 24 years old, General fitness goal, height 170cm, weight 65kg
+ * 
+ * TEAMS (2 teams with members):
+ *   - Fitness Warriors: john_doe (leader), jane_smith, mike_wilson (3 members)
+ *   - Morning Runners: jane_smith (leader), sarah_jones (2 members)
+ * 
+ * ACTIVITIES (8 activities with various exercise types):
+ *   - Running activities (2): 6-8.5km distance, 35-45 min duration, 450-600 calories
+ *   - Cycling activities (2): 18-25km distance, 50-60 min duration, 420-500 calories
+ *   - Swimming (1): 2km distance, 50 min duration, 550 calories
+ *   - Strength training (1): 75 min duration, 700 calories
+ *   - Yoga (1): 60 min duration, 200 calories
+ *   - Walking (1): 4km distance, 45 min duration, 250 calories
+ * 
+ * WORKOUTS (4 structured workout plans):
+ *   - Upper Body Strength: Bench Press (80kg), Pull-ups, Dumbbell Curls, 60 min, completed
+ *   - Cardio Day: Treadmill, Elliptical, 45 min, completed
+ *   - Leg Day: Squats (100kg), Leg Press (150kg), Lunges, 75 min, not completed
+ *   - Full Body: Deadlifts (120kg), Push-ups, Planks, 60 min, completed
  * 
  * Usage: npm run seed
  */
