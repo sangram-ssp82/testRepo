@@ -6,13 +6,15 @@ import Workout from '../models/Workout';
 
 const MONGODB_URI = 'mongodb://localhost:27017/octofit_db';
 
-// TEST DATA SEED DESCRIPTION:
-// Populates octofit_db with 4 users, 2 teams, 8 activities, and 4 workouts
-// Users: john_doe (28, lose weight), jane_smith (26, build muscle), mike_wilson (32, improve stamina), sarah_jones (24, general fitness)
-// Teams: Fitness Warriors (john_doe leader, 3 members), Morning Runners (jane_smith leader, 2 members)
-// Activities: 2 running (6-8.5km, 35-45min, 450-600cal), 2 cycling (18-25km, 50-60min, 420-500cal), 1 swimming (2km, 50min, 550cal), 1 strength (75min, 700cal), 1 yoga (60min, 200cal), 1 walking (4km, 45min, 250cal)
-// Workouts: Upper Body Strength (Bench Press 80kg, Pull-ups, Dumbbell Curls 15kg, 60min, completed), Cardio Day (Treadmill, Elliptical, 45min, completed), Leg Day (Squats 100kg, Leg Press 150kg, Lunges 20kg, 75min, not completed), Full Body (Deadlifts 120kg, Push-ups, Planks, 60min, completed)
-
+/**
+ * Seed the octofit_db database with test data
+ * 
+ * This function populates the database with 4 users, 2 teams, 8 activities, and 4 workouts.
+ * Users: john_doe (28, lose weight), jane_smith (26, build muscle), mike_wilson (32, improve stamina), sarah_jones (24, general fitness)
+ * Teams: Fitness Warriors (john_doe leader, 3 members), Morning Runners (jane_smith leader, 2 members)
+ * Activities: 2 running (6-8.5km, 35-45min, 450-600cal), 2 cycling (18-25km, 50-60min, 420-500cal), 1 swimming (2km, 50min, 550cal), 1 strength (75min, 700cal), 1 yoga (60min, 200cal), 1 walking (4km, 45min, 250cal)
+ * Workouts: Upper Body Strength (Bench Press 80kg, Pull-ups, Dumbbell Curls 15kg, 60min, completed), Cardio Day (Treadmill, Elliptical, 45min, completed), Leg Day (Squats 100kg, Leg Press 150kg, Lunges 20kg, 75min, not completed), Full Body (Deadlifts 120kg, Push-ups, Planks, 60min, completed)
+ */
 const seedDatabase = async () => {
   try {
     await mongoose.connect(MONGODB_URI);
