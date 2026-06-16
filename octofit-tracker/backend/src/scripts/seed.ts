@@ -41,6 +41,44 @@ import Workout from '../models/Workout';
 
 const MONGODB_URI = 'mongodb://localhost:27017/octofit_db';
 
+/**
+ * TEST DATA SEED DESCRIPTION
+ * ===========================
+ * 
+ * This seed script populates the octofit_db database with the following test data:
+ * 
+ * Users:
+ *   1. john_doe - 28 years old, Goal: Lose weight, Height: 180cm, Weight: 75kg
+ *   2. jane_smith - 26 years old, Goal: Build muscle, Height: 165cm, Weight: 62kg
+ *   3. mike_wilson - 32 years old, Goal: Improve stamina, Height: 185cm, Weight: 85kg
+ *   4. sarah_jones - 24 years old, Goal: General fitness, Height: 170cm, Weight: 65kg
+ * 
+ * Teams:
+ *   1. Fitness Warriors - Members: john_doe, jane_smith, mike_wilson - Leader: john_doe
+ *   2. Morning Runners - Members: jane_smith, sarah_jones - Leader: jane_smith
+ * 
+ * Activities (8 total):
+ *   - 2 Running activities: distances 6-8.5km, durations 35-45 min, calories 450-600
+ *   - 2 Cycling activities: distances 18-25km, durations 50-60 min, calories 420-500
+ *   - 1 Swimming activity: distance 2km, duration 50 min, calories 550
+ *   - 1 Strength training activity: duration 75 min, calories 700
+ *   - 1 Yoga activity: duration 60 min, calories 200
+ *   - 1 Walking activity: distance 4km, duration 45 min, calories 250
+ * 
+ * Workouts (4 total):
+ *   1. Upper Body Strength - Exercises: Bench Press (80kg), Pull-ups, Dumbbell Curls (15kg), Duration: 60 min, Status: completed
+ *   2. Cardio Day - Exercises: Treadmill, Elliptical, Duration: 45 min, Status: completed
+ *   3. Leg Day - Exercises: Squats (100kg), Leg Press (150kg), Lunges (20kg), Duration: 75 min, Status: not completed
+ *   4. Full Body - Exercises: Deadlifts (120kg), Push-ups, Planks, Duration: 60 min, Status: completed
+ */
+const TEST_DATA_DESCRIPTION = `
+OctoFit Tracker Test Data Seed:
+- 4 users with diverse fitness profiles and goals
+- 2 teams with team members and assigned leaders  
+- 8 activities covering various exercise types (running, cycling, swimming, strength, yoga, walking)
+- 4 structured workout plans with exercises, sets, reps, and weights
+`;
+
 const seedDatabase = async () => {
   try {
     await mongoose.connect(MONGODB_URI);
