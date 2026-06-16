@@ -1,9 +1,14 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
+import userRoutes from './routes/userRoutes';
+import teamRoutes from './routes/teamRoutes';
+import activityRoutes from './routes/activityRoutes';
+import workoutRoutes from './routes/workoutRoutes';
+import leaderboardRoutes from './routes/leaderboardRoutes';
 
 const app: Express = express();
 const PORT = 8000;
-const MONGODB_URI = 'mongodb://localhost:27017/octofit-tracker';
+const MONGODB_URI = 'mongodb://localhost:27017/octofit_db';
 
 // Middleware
 app.use(express.json());
@@ -29,6 +34,13 @@ app.get('/', (req: Request, res: Response) => {
   });
 });
 
+// API Routes
+app.use('/api/users', userRoutes);
+app.use('/api/teams', teamRoutes);
+app.use('/api/activities', activityRoutes);
+app.use('/api/workouts', workoutRoutes);
+app.use('/api/leaderboard', leaderboardRoutes);
+
 // Health check endpoint
 app.get('/health', (req: Request, res: Response) => {
   res.json({
@@ -38,7 +50,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // Error handling middleware
-app.use((err: any, req: Request, res: Response) => {
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
   res.status(500).json({
     error: 'Internal Server Error',
@@ -53,6 +65,7 @@ const startServer = async () => {
   app.listen(PORT, () => {
     console.log(`🚀 OctoFit Tracker API running on http://localhost:${PORT}`);
     console.log(`📊 MongoDB connecting to ${MONGODB_URI}`);
+    console.log(`📁 Database: octofit_db`);
   });
 };
 
