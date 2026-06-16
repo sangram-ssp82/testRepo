@@ -4,80 +4,14 @@ import Team from '../models/Team';
 import Activity from '../models/Activity';
 import Workout from '../models/Workout';
 
-/**
- * OctoFit Tracker - Test Data Seed Script
- * 
- * This seed script populates the octofit_db MongoDB database with comprehensive test data.
- * 
- * TEST DATA SEED DESCRIPTION:
- * ===========================
- * 
- * USERS (4 test users):
- *   - john_doe: 28 years old, Weight loss goal, height 180cm, weight 75kg
- *   - jane_smith: 26 years old, Muscle building goal, height 165cm, weight 62kg  
- *   - mike_wilson: 32 years old, Stamina improvement goal, height 185cm, weight 85kg
- *   - sarah_jones: 24 years old, General fitness goal, height 170cm, weight 65kg
- * 
- * TEAMS (2 teams with members):
- *   - Fitness Warriors: john_doe (leader), jane_smith, mike_wilson (3 members)
- *   - Morning Runners: jane_smith (leader), sarah_jones (2 members)
- * 
- * ACTIVITIES (8 activities with various exercise types):
- *   - Running activities (2): 6-8.5km distance, 35-45 min duration, 450-600 calories
- *   - Cycling activities (2): 18-25km distance, 50-60 min duration, 420-500 calories
- *   - Swimming (1): 2km distance, 50 min duration, 550 calories
- *   - Strength training (1): 75 min duration, 700 calories
- *   - Yoga (1): 60 min duration, 200 calories
- *   - Walking (1): 4km distance, 45 min duration, 250 calories
- * 
- * WORKOUTS (4 structured workout plans):
- *   - Upper Body Strength: Bench Press (80kg), Pull-ups, Dumbbell Curls, 60 min, completed
- *   - Cardio Day: Treadmill, Elliptical, 45 min, completed
- *   - Leg Day: Squats (100kg), Leg Press (150kg), Lunges, 75 min, not completed
- *   - Full Body: Deadlifts (120kg), Push-ups, Planks, 60 min, completed
- * 
- * Usage: npm run seed
- */
-
 const MONGODB_URI = 'mongodb://localhost:27017/octofit_db';
 
-/**
- * TEST DATA SEED DESCRIPTION
- * ===========================
- * 
- * This seed script populates the octofit_db database with the following test data:
- * 
- * Users:
- *   1. john_doe - 28 years old, Goal: Lose weight, Height: 180cm, Weight: 75kg
- *   2. jane_smith - 26 years old, Goal: Build muscle, Height: 165cm, Weight: 62kg
- *   3. mike_wilson - 32 years old, Goal: Improve stamina, Height: 185cm, Weight: 85kg
- *   4. sarah_jones - 24 years old, Goal: General fitness, Height: 170cm, Weight: 65kg
- * 
- * Teams:
- *   1. Fitness Warriors - Members: john_doe, jane_smith, mike_wilson - Leader: john_doe
- *   2. Morning Runners - Members: jane_smith, sarah_jones - Leader: jane_smith
- * 
- * Activities (8 total):
- *   - 2 Running activities: distances 6-8.5km, durations 35-45 min, calories 450-600
- *   - 2 Cycling activities: distances 18-25km, durations 50-60 min, calories 420-500
- *   - 1 Swimming activity: distance 2km, duration 50 min, calories 550
- *   - 1 Strength training activity: duration 75 min, calories 700
- *   - 1 Yoga activity: duration 60 min, calories 200
- *   - 1 Walking activity: distance 4km, duration 45 min, calories 250
- * 
- * Workouts (4 total):
- *   1. Upper Body Strength - Exercises: Bench Press (80kg), Pull-ups, Dumbbell Curls (15kg), Duration: 60 min, Status: completed
- *   2. Cardio Day - Exercises: Treadmill, Elliptical, Duration: 45 min, Status: completed
- *   3. Leg Day - Exercises: Squats (100kg), Leg Press (150kg), Lunges (20kg), Duration: 75 min, Status: not completed
- *   4. Full Body - Exercises: Deadlifts (120kg), Push-ups, Planks, Duration: 60 min, Status: completed
- */
-const TEST_DATA_DESCRIPTION = `
-OctoFit Tracker Test Data Seed:
-- 4 users with diverse fitness profiles and goals
-- 2 teams with team members and assigned leaders  
-- 8 activities covering various exercise types (running, cycling, swimming, strength, yoga, walking)
-- 4 structured workout plans with exercises, sets, reps, and weights
-`;
+// TEST DATA SEED DESCRIPTION:
+// Populates octofit_db with 4 users, 2 teams, 8 activities, and 4 workouts
+// Users: john_doe (28, lose weight), jane_smith (26, build muscle), mike_wilson (32, improve stamina), sarah_jones (24, general fitness)
+// Teams: Fitness Warriors (john_doe leader, 3 members), Morning Runners (jane_smith leader, 2 members)
+// Activities: 2 running (6-8.5km, 35-45min, 450-600cal), 2 cycling (18-25km, 50-60min, 420-500cal), 1 swimming (2km, 50min, 550cal), 1 strength (75min, 700cal), 1 yoga (60min, 200cal), 1 walking (4km, 45min, 250cal)
+// Workouts: Upper Body Strength (Bench Press 80kg, Pull-ups, Dumbbell Curls 15kg, 60min, completed), Cardio Day (Treadmill, Elliptical, 45min, completed), Leg Day (Squats 100kg, Leg Press 150kg, Lunges 20kg, 75min, not completed), Full Body (Deadlifts 120kg, Push-ups, Planks, 60min, completed)
 
 const seedDatabase = async () => {
   try {
