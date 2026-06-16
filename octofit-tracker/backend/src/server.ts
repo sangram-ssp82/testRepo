@@ -1,5 +1,5 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
-import mongoose from 'mongoose';
+import { connectDatabase } from './config/database';
 import userRoutes from './routes/userRoutes';
 import teamRoutes from './routes/teamRoutes';
 import activityRoutes from './routes/activityRoutes';
@@ -8,7 +8,6 @@ import leaderboardRoutes from './routes/leaderboardRoutes';
 
 const app: Express = express();
 const PORT = 8000;
-const MONGODB_URI = 'mongodb://localhost:27017/octofit_db';
 
 // Middleware
 app.use(express.json());
@@ -17,8 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // Database connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGODB_URI);
-    console.log('MongoDB connected successfully');
+    await connectDatabase();
   } catch (error) {
     console.error('MongoDB connection error:', error);
     process.exit(1);
@@ -64,8 +62,8 @@ const startServer = async () => {
   
   app.listen(PORT, () => {
     console.log(`🚀 OctoFit Tracker API running on http://localhost:${PORT}`);
-    console.log(`📊 MongoDB connecting to ${MONGODB_URI}`);
-    console.log(`📁 Database: octofit_db`);
+    console.log(`📊 Database: octofit_db`);
+    console.log(`📝 API Documentation: http://localhost:${PORT}/api`);
   });
 };
 

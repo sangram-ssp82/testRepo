@@ -4,6 +4,18 @@ import Team from '../models/Team';
 import Activity from '../models/Activity';
 import Workout from '../models/Workout';
 
+/**
+ * Test Data Seed Script for OctoFit Tracker
+ * 
+ * This script populates the octofit_db database with comprehensive test data including:
+ * - 4 users with varied fitness profiles
+ * - 2 teams with team members and leaders
+ * - 8 activities with different exercise types and intensities
+ * - 4 workouts with structured exercise plans
+ * 
+ * Usage: npm run seed
+ */
+
 const MONGODB_URI = 'mongodb://localhost:27017/octofit_db';
 
 const seedDatabase = async () => {
@@ -18,7 +30,14 @@ const seedDatabase = async () => {
     await Workout.deleteMany({});
     console.log('🗑️  Cleared existing data');
 
-    // Create users
+    // =====================================================
+    // SEED: User Data (4 test users with profiles)
+    // =====================================================
+    // Creates diverse user profiles for testing:
+    // - john_doe: Weight loss goal, age 28, height 180cm, weight 75kg
+    // - jane_smith: Muscle building goal, age 26, height 165cm, weight 62kg
+    // - mike_wilson: Stamina improvement, age 32, height 185cm, weight 85kg
+    // - sarah_jones: General fitness, age 24, height 170cm, weight 65kg
     const users = await User.create([
       {
         username: 'john_doe',
@@ -63,7 +82,12 @@ const seedDatabase = async () => {
     ]);
     console.log(`✅ Created ${users.length} users`);
 
-    // Create teams
+    // =====================================================
+    // SEED: Team Data (2 teams with members)
+    // =====================================================
+    // Creates test teams:
+    // - Fitness Warriors: john_doe (leader), jane_smith, mike_wilson (3 members)
+    // - Morning Runners: jane_smith (leader), sarah_jones (2 members)
     const teams = await Team.create([
       {
         name: 'Fitness Warriors',
@@ -80,7 +104,17 @@ const seedDatabase = async () => {
     ]);
     console.log(`✅ Created ${teams.length} teams`);
 
-    // Create activities
+    // =====================================================
+    // SEED: Activity Data (8 activities with various types)
+    // =====================================================
+    // Creates diverse activity records:
+    // - Running activities: 8.5km, 35-45 min, 450-600 calories
+    // - Cycling activities: 18-25km, 50-60 min, 420-500 calories
+    // - Swimming: 2km, 50 min, 550 calories
+    // - Strength training: 75 min, 700 calories
+    // - Yoga: 60 min, 200 calories
+    // - Walking: 4km, 45 min, 250 calories
+    // Activities distributed across 4 users with different intensities
     const activities = await Activity.create([
       {
         userId: users[0]._id,
@@ -155,7 +189,15 @@ const seedDatabase = async () => {
     ]);
     console.log(`✅ Created ${activities.length} activities`);
 
-    // Create workouts
+    // =====================================================
+    // SEED: Workout Data (4 structured workout plans)
+    // =====================================================
+    // Creates structured workout plans:
+    // - Upper Body Strength: Bench Press (80kg, 4x8), Pull-ups (3x10), Dumbbell Curls (3x12, 15kg)
+    // - Cardio Day: Treadmill (30 min), Elliptical (20 min)
+    // - Leg Day: Squats (100kg, 4x10), Leg Press (150kg, 3x12), Lunges (3x12, 20kg)
+    // - Full Body: Deadlifts (120kg, 3x8), Push-ups (3x20), Planks (3x60sec)
+    // Includes team associations and completion status
     const workouts = await Workout.create([
       {
         userId: users[0]._id,
